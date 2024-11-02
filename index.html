@@ -60,7 +60,7 @@
 
             reader.onreadingerror = (e) => {
                 console.error(e);
-                document.getElementById('lastError').innerText = JSON.stringify(e);
+                document.getElementById('lastError').innerText = document.getElementById('lastError').innerText + '\n 1 \n' + JSON.stringify(e);
             }
             reader.onreading = (e) => {
                 var rootResultElement = document.getElementById("scanResult");
@@ -76,7 +76,7 @@
 
                 for (var i = 0; i < e.message.records.length; ++i) {
                     var record = e.message.records[i];
-                    document.getElementById('lastError').innerText = JSON.stringify(record);
+                    document.getElementById('lastError').innerText = document.getElementById('lastError').innerText + '\n 2 (e.message.records.length) \n' + JSON.stringify(record);
                     var envelopeElement = document.createElement('div')
                     envelopeElement.className = 'ndfmessage';
 
@@ -99,7 +99,7 @@
             reader.onreadingerror = (e) => {
                 var lastError = document.getElementById('lastError');
                 // lastError.innerText = e.toString();
-                lastError.innerText = JSON.stringify(e);
+                lastError.innerText = document.getElementById('lastError').innerText + '\n 3 \n' + JSON.stringify(e);
 
             }
         }
@@ -140,7 +140,7 @@
 <body>
 
     <div>
-        <button id="scanButton" onclick="scanTag()">Scan for Tags v1.1</button>
+        <button id="scanButton" onclick="scanTag()">Scan for Tags v1.2</button>
     </div>
     <div>
         <button id="stopScanButton" onclick="abortScan()" disabled>Abort Scan</button>
